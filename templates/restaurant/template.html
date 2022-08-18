@@ -1,0 +1,10 @@
+
+<form method="get">
+    {{ filter.form.as_p }}
+    <input type="submit" />
+</form>
+{% for obj in filter.qs %}
+    {{ obj.food_name }} - ${{ obj.food_price }}<br />
+{% endfor %}
+
+

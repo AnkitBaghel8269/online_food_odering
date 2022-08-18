@@ -1,0 +1,42 @@
+{% load static %}
+
+<header class="stick">
+    <div class="topbar">
+        <div class="container">
+         
+            <div class="topbar-register">
+                {% if user.is_authenticated %}
+                 {{ user.username }} / <a href="{% url 'logout' %}" title="Logout">LOG OUT</a>
+                {% else %}
+                <a href="{% url 'login' %}" title="Login">LOGIN</a> / <a href="{% url 'register' %}" title="Register">REGISTER</a>
+                {% endif %}
+            </div>
+            <div class="social1">
+                <a href="https://www.facebook.com/" title="Facebook" itemprop="url" target="_blank"><i class="fa fa-facebook-square"></i></a>
+                <a href="https://twitter.com/" title="Twitter" itemprop="url" target="_blank"><i class="fa fa-twitter"></i></a>
+                <a href="https://myaccount.google.com/intro/profile" title="Google Plus" itemprop="url" target="_blank"><i class="fa fa-google-plus"></i></a>
+            </div>
+        </div>                
+    </div><!-- Topbar -->
+    <div class="logo-menu-sec">
+        <div class="container">
+            <div class="logo"><h1 itemprop="headline"><a href="{% url 'index' %}" title="Home" itemprop="url"><img src="{% static 'assets/images/logo2.png' %}" alt="logo.png" itemprop="image"></a></h1></div>
+            <nav>
+                <div class="menu-sec">
+                    <ul>
+                        <li class="menu-item-has-children"><a href="{% url 'index' %}" title="HOMEPAGES" itemprop="url"><span class="red-clr">FOOD ORDERING</span>HOME</a>
+                            
+                        </li>
+                        <li class="menu-item-has-children"><a href="{% url 'all_restaurants' %}" itemprop="url"><span class="red-clr">REAL FOOD</span>RESTAURANTS</a>
+           
+                        <li class="menu-item-has-children"><a href="{% url 'our_menu' %}"  itemprop="url"><span class="red-clr">REAL FOOD</span>Order NOW</a></li>
+                            
+                        </li>
+                        <li><a href="{% url 'contect_us' %}"  itemprop="url"><span class="red-clr">REAL FOOD</span>CONTACT US</a></li>
+                    </ul>
+                    <a class="red-bg brd-rd4" href="{% url 'register_restaurant' %}" title="Register" itemprop="url">REGISTER RESTAURANT</a>
+                </div>
+            </nav><!-- Navigation -->
+        </div>
+    </div><!-- Logo Menu Section -->
+</header><!-- Header -->

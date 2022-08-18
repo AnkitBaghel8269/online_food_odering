@@ -1,0 +1,58 @@
+  {% extends 'base.html' %}
+  {% load static %}
+  {% block main %}
+  <section>
+            <div class="block">
+                <div class="fixed-bg" style="background-image: url('{% static "assets/images/topbg.jpg" %}');"></div>
+                <div class="page-title-wrapper text-center">
+                    <div class="col-md-12 col-sm-12 col-lg-12">
+                        <div class="page-title-inner">
+                            <h1 itemprop="headline">Gallery Detail</h1>
+                                <span>A Greate Restaurant Website</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="bread-crumbs-wrapper">
+            <div class="container">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'index' %}" title="" itemprop="url">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#" title="" itemprop="url">Food Gallery</a></li>
+                    <li class="breadcrumb-item active">Gallery Detail</li>
+                </ol>
+            </div>
+        </div>
+
+        <section>
+            <div class="block less-spacing gray-bg top-padd30">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-lg-12">
+                                <div class="sec-box">
+                                    {% for food_gallery_detail in food_gallery_detail %}
+                                <div class="gallery-detail-wrapper">
+                                    <img style="max-width: 100%; max-height: 350px;" class="wow fadeIn" data-wow-delay="0.2s" src="{{ food_gallery_detail.food_image.url }}" alt="gallery-detail-img.jpg" itemprop="image">
+                                    <div class="gallery-detail-inner">
+                                        <h1 itemprop="headline">{{ food_gallery_detail.food_name }}</h1>
+                                        <p>{{ food_gallery_detail.food_description }}</p>
+                                        
+                        
+                                        <div class="post-tags2">
+                                            <span class="red-clr">Posted By:</span>
+                                            <a href="{% url 'restaurant_detail' food_gallery_detail.pk %}" title="" itemprop="url"><b style="font-size: 20px;">{{ food_gallery_detail.r_name.r_manager_name }}</b></a>
+                                            
+                                        </div>
+                                    </div>
+                                </div><!-- Gallery Detail Wrapper -->
+                                {% endfor %}
+                            </div>
+                            </div><!-- Section Box -->
+                        </div>
+                    </div>
+                
+            </div>
+        </section>
+
+  {% endblock main %}

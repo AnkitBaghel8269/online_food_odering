@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block main %}
+<div class="sign-popup-inner brd-rd5">
+<form class="sign-form" method="post" action="{% url 'thankyou' %}">
+    {% csrf_token %}
+    <div class="row">
+        {{ form | crispy }}
+        <div class="col-md-12 col-sm-12 col-lg-12">
+          
+            <button class="red-bg brd-rd3" type="submit">Submit</button>
+        </div>
+        
+    </div>
+</form>
+</div>
+{% endblock main %}

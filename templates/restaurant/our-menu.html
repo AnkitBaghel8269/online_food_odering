@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main %}
+
+<body itemscope>
+    <main>
+       
+ 
+
+   
+
+        <section>
+            <div class="block">
+                <div class="fixed-bg" style="background-image: url('{% static "assets/images/topbg.jpg" %}');"></div>
+                <div class="page-title-wrapper text-center">
+                    <div class="col-md-12 col-sm-12 col-lg-12">
+                        <div class="page-title-inner">
+                            <h1 itemprop="headline">Our Menu</h1>
+                                <span>A Greate Restaurant Website</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="bread-crumbs-wrapper">
+            <div class="container">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'index' %}" title="" itemprop="url">Home</a></li>
+                    <li class="breadcrumb-item active">our menus</li>
+                </ol>
+            </div>
+        </div>
+
+        <section>
+            <div class="block">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-lg-12">
+                            <div class="title1-wrapper text-center">
+                                <div class="title1-inner">
+                                    <span>Website for Restaurant and Cafe</span>
+                                    <h2 itemprop="headline">popular of the month</h2>
+                                </div>
+                            </div>
+                            <div class="remove-ext">
+                                <div class="row">
+									{% for our_menu in our_menu %}
+									<div class="col-md-4 col-sm-6 col-lg-4">
+                                        <div class="popular-dish-box style2 wow fadeIn" data-wow-delay="0.2s" style="max-height:560px; max-width:350px;">
+                                            <div class="popular-dish-thumb">
+                                                <a href="{% url 'food_detail' our_menu.pk %}" title="" itemprop="url"><img style="max-height:200px; width: 100%;" src="{{ our_menu.food_image.url }}" alt="popular-dish-img1.jpg" itemprop="image"></a>
+                                                <span class="post-rate yellow-bg brd-rd2"><i class="fa fa-star-o"></i> 4.25</span>
+                                                <span class="likes"><i class="fa fa-heart-o"></i> 12</span>
+                                            </div>
+                                            <div class="popular-dish-info">
+                                                <h4 itemprop="headline"><a href="food-detail.html" title="" itemprop="url">{{ our_menu.food_name }}</a></h4>
+                                                <p itemprop="description">{{ our_menu.food_description }}</p>
+                                                <span class="price">${{ our_menu.food_price }}</span>
+                                                <a class="brd-rd4 " href="{% url 'food_detail' our_menu.pk %}" title="Order Now" itemprop="url">Order Now</a>
+                                                <div class="restaurant-info">
+                                                    <img  style="max-width: 60px;" src="{{ our_menu.r_name.r_image.url }}"alt="restaurant-logo1.png" itemprop="image">
+                                                    <div class="restaurant-info-inner">
+                                                        <h6 itemprop="headline"><a href="{% url 'restaurant_detail' our_menu.r_name.pk %}" title="" itemprop="url">{{ our_menu.r_name }}</a></h6>
+                                                        <span class="red-clr">{{ our_menu.r_name.address }}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div><!-- Popular Dish Box -->
+                                    </div>
+									{% endfor %}
+                                
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+{% endblock main %}

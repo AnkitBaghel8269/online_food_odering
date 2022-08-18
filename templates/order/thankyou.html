@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main %}
+
+
+<section>
+    <div class="block">
+        <div class="fixed-bg" style="background-image: url('{% static "assets/images/ankit.jpg" %}');"></div>
+        <div class="page-title-wrapper text-center">
+            <div class="col-md-12 col-sm-12 col-lg-12">
+                <div class="page-title-inner">
+                    <h1 style="color:blue" itemprop="headline">Thank You For Food Odering</h1>
+                   
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+    <a style="float: right; margin:40px;color: red; " href="{% url 'review' %}">Please Send Your Review </a>
+</section>
+
+
+
+
+
+
+
+
+{% endblock main %}

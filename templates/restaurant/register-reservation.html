@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block main %}
+
+        
+        <section>
+            <div class="block">
+                <div class="fixed-bg" style="background-image: url('{% static "assets/images/topbg.jpg" %}');"></div>
+                <div class="page-title-wrapper text-center">
+                    <div class="col-md-12 col-sm-12 col-lg-12">
+                        <div class="page-title-inner">
+                            <h1 itemprop="headline">Register Reservation</h1>
+                                <span>A Greate Restaurant Website</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="bread-crumbs-wrapper">
+            <div class="container">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'index' %}" title="" itemprop="url">Home</a></li>
+                    <li class="breadcrumb-item active">Register Reservation</li>
+                </ol>
+            </div>
+        </div>
+
+        <section>
+            <div class="block top-padd30 gray-bg">
+                
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-lg-12">
+                                <div class="sec-box">
+                                <div class="reservation-tabs-wrapper">
+                                    <div class="row">
+                                        <div class="col-md-3 col-sm-12 col-lg-3">
+                                            <div class="reservation-tabs-list brd-rd5">
+                                                <ul class="nav nav-tabs brd-rd5">
+                                                    <li class="active">
+														<a href="#reservation-tab1" data-toggle="tab">
+														<span class="brd-rd50">1</span> Information</a>
+													</li>
+                                                 
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-9 col-sm-12 col-lg-9">
+                                            <div class="reservation-tab-content">
+                                                <div class="tab-content">
+                                                    <div class="tab-pane fade in active" id="reservation-tab1">
+                                                        <form class="restaurant-info-form brd-rd5" method="post" enctype="multipart/form-data">
+                                                            {% csrf_token %}
+                                                            {{ form | crispy }}
+                                                                <div class="col-md-12 col-sm-12 col-lg-12">
+                                                                    <div class="check-box">
+                                                                        <input type="checkbox" id="agrement">
+                                                                        <label for="agrement">Accept Terms and conditions</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12 col-sm-12 col-lg-12">
+                                                                    <div class="step-buttons">
+                                                                        <button class="red-bg brd-rd3" type="submit">REGISTER NOW</button>
+                                                                        
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                  
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div><!-- Section Box -->
+                            </div>
+                        </div>
+                    </div>
+                
+            </div>
+        </section>
+
+{% endblock main %}  
+
+       

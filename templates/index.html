@@ -1,0 +1,317 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main %}
+
+        <section>
+            <div class="block blackish opac50">
+                <div class="fixed-bg" style="background-image: url('{% static "assets/images/parallax2.jpg" %}');"></div>
+                <div class="restaurant-searching style2 text-center">
+                    <div class="restaurant-searching-inner">
+						<span>Delicious <i>Food</i> </span>
+                        <h2 itemprop="headline">Order Delivery & Take-Out</h2>
+                        <form class="restaurant-search-form2 brd-rd30" action="{% url 'search_results' %}" method="get">
+                            <input class="brd-rd30" name="search" type="text" placeholder="RESTAURANT NAME">
+                            <button class="brd-rd30 red-bg" type="submit">SEARCH</button>
+                        </form>
+                    </div>
+                </div><!-- Restaurant Searching -->
+            </div>
+        </section>
+
+        <section>
+            <div class="block no-padding overlape-45">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-lg-12">
+                            <div class="top-restaurants-wrapper">
+                                <ul class="restaurants-wrapper style2">
+                                    <li class="wow bounceIn" data-wow-delay="0.2s"><div class="top-restaurant"><a class="brd-rd50" href="#" title="Restaurant 1" itemprop="url"><img src="{% static 'assets/images/resource/top-restaurant1.png' %}" alt="top-restaurant1.png" itemprop="image"></a></div></li>
+                                    <li class="wow bounceIn" data-wow-delay="0.4s"><div class="top-restaurant"><a class="brd-rd50" href="#" title="Restaurant 2" itemprop="url"><img src="{% static 'assets/images/resource/top-restaurant2.png' %}" alt="top-restaurant2.png" itemprop="image"></a></div></li>
+                                    <li class="wow bounceIn" data-wow-delay="0.6s"><div class="top-restaurant"><a class="brd-rd50" href="#" title="Restaurant 3" itemprop="url"><img src="{% static 'assets/images/resource/top-restaurant3.png' %}" alt="top-restaurant3.png" itemprop="image"></a></div></li>
+                                    <li class="wow bounceIn" data-wow-delay="0.8s"><div class="top-restaurant"><a class="brd-rd50" href="#" title="Restaurant 4" itemprop="url"><img src="{% static 'assets/images/resource/top-restaurant4.png' %}" alt="top-restaurant4.png" itemprop="image"></a></div></li>
+                                    <li class="wow bounceIn" data-wow-delay="1s"><div class="top-restaurant"><a class="brd-rd50" href="#" title="Restaurant 5" itemprop="url"><img src="{% static 'assets/images/resource/top-restaurant5.png' %}" alt="top-restaurant5.png" itemprop="image"></a></div></li>
+                                    <li class="wow bounceIn" data-wow-delay="1.2s"><div class="top-restaurant"><a class="brd-rd50" href="#" title="Restaurant 5" itemprop="url"><img src="{% static 'assets/images/resource/top-restaurant6.png' %}" alt="top-restaurant6.png" itemprop="image"></a></div></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section><!-- top returents -->
+		
+		<section>
+            <div class="block remove-bottom">
+                <div class="container">
+                    <div class="row">
+						<div class="welcome-sec">
+							<div class="col-md-6 col-sm-6 col-lg-6">
+								<div class="welcome-secinfo">
+									<h2>Welcome To FoodChow</h2>
+									<span>We Create Delicious Memories</span>
+									<p>Proin luctus, justo sit amet laoreet venenatis, libero velit tincidunt mi, nec 
+	fermentum ante massa id quam. In gravida erat vel diam blandit consequat morbi. Ut interdum nuceu egestas arcu uspend isse sodales. Eiusmod tempor incidiunt labore velit dolore magna aliqu sed enimi nim.</p>
+									<div class="award">
+										<img src="{% static 'assets/images/award.png' %}" alt="">
+										<span><em>middle east</em>hotel <i>award</i></span>
+									</div>
+									<span class="sign">
+										<img src="{% static 'assets/images/sign.png' %}" alt="">
+									</span>
+								</div>
+							</div>
+							<div class="col-md-6 col-sm-6 col-lg-6">
+								<div class="welcome-gallery">
+									<img src="{% static 'assets/images/resource/food1.jpg' %}" alt="">
+									<img src="{% static 'assets/images/resource/food2.jpg' %}" alt="">
+									<img src="{% static 'assets/images/resource/food3.jpg' %}" alt="">
+								</div>
+							</div>
+						</div>	
+                    </div>
+                </div>
+            </div>
+        </section><!-- welcome section -->
+
+        <section>
+            <div class="block">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-lg-12">
+                            <div class="title1-wrapper text-center">
+                                <div class="title1-inner">
+                                    <span>Website for Restaurant and Cafe</span>
+                                    <h2 itemprop="headline">popular of the month</h2>
+                                </div>
+                            </div>
+                            <div class="remove-ext">
+                                <div class="row">
+									{% for our_menu in our_menu %}
+									<div class="col-md-4 col-sm-6 col-lg-4">
+                                        <div class="popular-dish-box style2 wow fadeIn" data-wow-delay="0.2s" style="max-height:560px; max-width:350px;">
+                                            <div class="popular-dish-thumb">
+                                                <a href="{% url 'food_detail' our_menu.pk %}" title="" itemprop="url"><img style="max-height:200px; width: 100%;" src="{{ our_menu.food_image.url }}" alt="popular-dish-img1.jpg" itemprop="image"></a>
+                                                <span class="post-rate yellow-bg brd-rd2"><i class="fa fa-star-o"></i> 4.25</span>
+                                                <span class="likes"><i class="fa fa-heart-o"></i> 12</span>
+                                            </div>
+                                            <div class="popular-dish-info">
+                                                <h4 itemprop="headline"><a href="food-detail.html" title="" itemprop="url">{{ our_menu.food_name }}</a></h4>
+                                                <p itemprop="description">{{ our_menu.food_description }}</p>
+                                                <span class="price">${{ our_menu.food_price }}</span>
+                                                <a class="brd-rd4 " href="{% url 'food_detail' our_menu.pk %}" title="Order Now" itemprop="url">Order Now</a>
+                                                <div class="restaurant-info">
+                                                    <img  style="max-width: 60px;" src="{{ our_menu.r_name.r_image.url }}"alt="restaurant-logo1.png" itemprop="image">
+                                                    <div class="restaurant-info-inner">
+                                                        <h6 itemprop="headline"><a href="{% url 'restaurant_detail' our_menu.r_name.pk %}" title="" itemprop="url">{{ our_menu.r_name }}</a></h6>
+                                                        <span class="red-clr">{{ our_menu.r_name.address }}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div><!-- Popular Dish Box -->
+                                    </div>
+									{% endfor %}
+                                
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="block remove-bottom blackish low-opacity margin-bottom">
+                <div class="fixed-bg" style="background-image: url(assets/images/parallax3.jpg);"></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-lg-12">
+                            <div class="title1-wrapper text-center text-white">
+                                <div class="title1-inner">
+                                    <span>Website for Restaurant and Cafe</span>
+                                    <h2 itemprop="headline">Popular Localities </h2>
+                                </div>
+                            </div>
+                            <div class="localities-wrapper">
+                                <div class="localities-inner brd-rd2 wow fadeIn" data-wow-delay="0.2s">
+                                    <div class="row">
+										{% for all_restaurant in all_restaurant %}
+                                        <div class="col-md-4 col-sm-6 col-lg-4">
+                                            <ul class="locat-list">
+                                                <li>{{ all_restaurant.city }}</li>
+                                                
+                                            </ul>
+                                        </div>
+										 {% endfor %}
+                                        
+                                    </div>
+                                </div>
+                            </div><!-- Localities Wrapper -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+		{% block featuredfood %}
+		{% include 'restaurant/featured_food.html' %}
+		{% endblock featuredfood %}
+		<section>
+			<div class="block">
+                <div class="container">
+                    <div class="row">
+						<div class="col-md-12 col-sm-12 col-lg-12">
+							<div class="title1-wrapper text-center">
+								<div class="title1-inner">
+									<span>Website for Restaurant and Cafe</span>
+									<h2 itemprop="headline">Restaurant Services</h2>
+								</div>
+							</div>
+						</div>	
+						<div class="resturent-services remove-ext">
+							<div class="col-md-4 col-sm-6">
+								<div class="servise-box wow fadeIn" data-wow-delay="0.2s">
+									<figure>
+										<img src="{% static 'assets/images/resource/resto-service1.jpg' %}" alt="">
+									</figure>
+									<div class="uper-meta">
+										<i><img src="{% static 'assets/images/icon1.png' %}" alt=""></i>
+										<h4><a href="#" title="">High Quality Food</a></h4>
+										<span>About electric do in market</span>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4 col-sm-6">
+								<div class="servise-box wow fadeIn" data-wow-delay="0.3s">
+									<figure>
+										<img src="{% static 'assets/images/resource/resto-service2.jpg' %}" alt="">
+									</figure>
+									<div class="uper-meta">
+										<i><img src="{% static 'assets/images/icon2.png' %}" alt=""></i>
+										<h4><a href="#" title="">Clean Eating</a></h4>
+										<span>About electric do in market</span>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4 col-sm-6">
+								<div class="servise-box wow fadeIn" data-wow-delay="0.4s">
+									<figure>
+										<img src="{% static 'assets/images/resource/resto-service3.jpg' %}" alt="">
+									</figure>
+									<div class="uper-meta">
+										<i><img src="{% static 'assets/images/icon3.png' %}" alt=""></i>
+										<h4><a href="#" title="">Food Free Delivery</a></h4>
+										<span>About electric do in market</span>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4 col-sm-6">
+								<div class="servise-box wow fadeIn" data-wow-delay="0.5s">
+									<figure>
+										<img src="{% static 'assets/images/resource/resto-service4.jpg' %}" alt="">
+									</figure>
+									<div class="uper-meta">
+										<i><img src="{% static 'assets/images/icon4.png' %}" alt=""></i>
+										<h4><a href="#" title="">Italian Food</a></h4>
+										<span>About electric do in market</span>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4 col-sm-6">
+								<div class="servise-box wow fadeIn" data-wow-delay="0.6s">
+									<figure>
+										<img src="{% static 'assets/images/resource/resto-service5.jpg' %}" alt="">
+									</figure>
+									<div class="uper-meta">
+										<i><img src="{% static 'assets/images/icon5.png' %}" alt=""></i>
+										<h4><a href="#" title="">Russian Food</a></h4>
+										<span>About electric do in market</span>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4 col-sm-6">
+								<div class="servise-box wow fadeIn" data-wow-delay="0.7s">
+									<figure>
+										<img src="{% static 'assets/images/resource/resto-service6.jpg' %}" alt="">
+									</figure>
+									<div class="uper-meta">
+										<i><img src="{% static 'assets/images/icon6.png' %}" alt=""></i>
+										<h4><a href="#" title="">American Food</a></h4>
+										<span>About electric do in market</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section><!-- our services -->
+		
+	
+
+        <section>
+            <div class="block bottom-padd210">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-lg-12">
+                            <div class="title1-wrapper text-center">
+                                <div class="title1-inner">
+                                    <span>Website for Restaurant and Cafe</span>
+                                    <h2 itemprop="headline">Recent News & Updates</h2>
+                                </div>
+                            </div>
+                            <div class="remove-ext margn-btm">
+                                <div class="row">
+                                    <div class="col-md-4 col-sm-6 col-lg-4">
+                                        <div class="news-box wow fadeIn" data-wow-delay="0.2s">
+                                            <div class="news-thumb">
+                                                <a class="brd-rd2" href="blog-detail-right-sidebar.html" title="" itemprop="url"><img src="{% static 'assets/images/resource/news-img1.jpg' %}" alt="news-img1.jpg" itemprop="image"></a>
+                                                <div class="news-btns">
+                                                    <a class="post-date red-bg" href="#" title="" itemprop="url">JUNE 14</a>
+                                                    <a class="read-more" href="blog-detail-right-sidebar.html" itemprop="url">READ MORE</a>
+                                                </div>
+                                            </div>
+                                            <div class="news-info">
+                                                <h4 itemprop="headline"><a href="blog-detail-right-sidebar.html" title="" itemprop="url">Floury Bakery is The Best Choice</a></h4>
+                                                <p itemprop="description">The only thing bad about the place was the time they .took to provide us with our food</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 col-lg-4">
+                                        <div class="news-box wow fadeIn" data-wow-delay="0.4s">
+                                            <div class="news-thumb">
+                                                <a class="brd-rd2" href="blog-detail-left-sidebar.html" title="" itemprop="url"><img src="{% static 'assets/images/resource/news-img2.jpg' %}" alt="news-img2.jpg" itemprop="image"></a>
+                                                <div class="news-btns">
+                                                    <a class="post-date red-bg" href="#" title="" itemprop="url">AUGUST 14</a>
+                                                    <a class="read-more" href="blog-detail-left-sidebar.html" itemprop="url">READ MORE</a>
+                                                </div>
+                                            </div>
+                                            <div class="news-info">
+                                                <h4 itemprop="headline"><a href="blog-detail-left-sidebar.html" title="" itemprop="url">Cras venenatis erat ac massa Ultricies</a></h4>
+                                                <p itemprop="description">The only thing bad about the place was the time they .took to provide us with our food</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 col-lg-4">
+                                        <div class="news-box wow fadeIn" data-wow-delay="0.6s">
+                                            <div class="news-thumb">
+                                                <a class="brd-rd2" href="blog-detail.html" title="" itemprop="url"><img src="{% static 'assets/images/resource/news-img3.jpg' %}" alt="news-img3.jpg" itemprop="image"></a>
+                                                <div class="news-btns">
+                                                    <a class="post-date red-bg" href="#" title="" itemprop="url">APRIL 14</a>
+                                                    <a class="read-more" href="blog-detail.html" itemprop="url">READ MORE</a>
+                                                </div>
+                                            </div>
+                                            <div class="news-info">
+                                                <h4 itemprop="headline"><a href="blog-detail.html" title="" itemprop="url">Easy Homemade Shahi Tukda Recipe</a></h4>
+                                                <p itemprop="description">The only thing bad about the place was the time they .took to provide us with our food</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+{% endblock main %}

@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main %}
+
+        <section>
+            <div class="block">
+                <div class="fixed-bg" style="background-image: url('{% static "assets/images/topbg.jpg" %}');"></div>
+                <div class="page-title-wrapper text-center">
+                    <div class="col-md-12 col-sm-12 col-lg-12">
+                        <div class="page-title-inner">
+                            <h1 itemprop="headline">Search Not Found</h1>
+                                <span>A Greate Restaurant Website</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="bread-crumbs-wrapper">
+            <div class="container">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'index' %}" title="" itemprop="url">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#" title="" itemprop="url">Search</a></li>
+                    <li class="breadcrumb-item active">Search Not Found</li>
+                </ol>
+            </div>
+        </div>
+
+        <section>
+            <div class="block top-padd30 gray-bg">
+                    <div class="container">
+              
+                        <div class="search-found">
+                            <h3 itemprop="headline">Please Try Again... This Search Var <span class="red-clr">"Food Name"</span></h3>
+                          
+                            <h2 itemprop="headline">No Results Found - Search a Relevant Keyword</h2>
+                            <form class="search-frm" action="{% url 'search_by_food_results' %}" method="get">
+                                <input type="text" name="search_by_food" placeholder="Search Food">
+                                <button class="red-bg" type="submit"><i class="fa fa-search"></i></button>
+                            </form>
+                        </div>
+                    </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="block gray-bg bottom-padd210 top-padd30">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-lg-12">
+                           
+                            <h4 class="widget-title2 sudo-bg-red" itemprop="headline">Popular Restaurants </h4>
+                                           
+                                            <div class="remove-ext">
+                                                <div class="row">
+                                                    {% for our_menu in our_menu|slice:3 %}
+                                                    <div class="col-md-4 col-sm-4 col-lg-4">
+                                                        <div class="featured-restaurant-box wow fadeIn" data-wow-delay="0.2s" >
+                                                            
+                                                            <div class="featured-restaurant-info">
+                                                               
+                                                                
+                                                                <a href="{% url 'food_detail' our_menu.pk %}" title="" itemprop="url"><img style="height:100px; width:500px;" src="{{ our_menu.food_image.url }}" alt="most-popular-img1.png" itemprop="image"></a>
+                                                          
+                                                                <h4 itemprop="headline"><a href="{% url 'food_detail' our_menu.pk %}" title="" itemprop="url">{{ our_menu.food_name }}</a></h4>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {% endfor %}
+                                                    </div>
+                                                </div>
+                                        </div>
+                            </div>
+                        </div>
+                    </div>       
+        </section>
+
+        
+
+   {% endblock main %}

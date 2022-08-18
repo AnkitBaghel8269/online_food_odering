@@ -1,0 +1,78 @@
+{% load static %}
+<section>
+    <div class="block gray-bg2 top-padd210">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-lg-12">
+                    <div class="filters-wrapper">
+                    <div class="title1-wrapper text-center">
+                        <div class="title1-inner">
+                            <span>Your Favourite Food</span>
+                            <h2 itemprop="headline">featured food</h2>
+                        </div>
+                    </div>
+                    
+                    <ul style="text-align:center; margin-bottom: 50px;">
+                        <li  class="active m-5" style="display:inline;"><a  data-filter="*" href="#" itemprop="url">All</a></li>
+                    
+                        {% for food_type in food_type %}
+                        <li style="display:inline; margin: 10px;"><a data-filter=".filter-item1" href="{% url 'featured_food' food_type %}" itemprop="url">{{ food_type }}</a></li>
+                     
+                        {% endfor %}
+                       
+                    </ul><!-- Filter Buttons -->
+                    <div class="filters-inner style2">
+                        <div class="row">
+                            <div class="masonry">
+                            {% if food %}
+                               {% for our_menu in food %}
+                                <div class="col-md-6 col-sm-12 col-lg-6 filter-item filter-item1">
+                                    <div class="featured-restaurant-box wow fadeIn" data-wow-delay="0.1s">
+                                        <div class="featured-restaurant-thumb">
+                                            <a href="{% url 'food_detail' our_menu.pk %}" title="" itemprop="url"><img class="brd-rd50" src="{{ our_menu.r_name.r_image.url }}" alt="featured-restaurant-img1.jpg" itemprop="image"></a>
+                                        </div>
+                                        <div class="featured-restaurant-info">
+                                            <span class="red-clr">{{ our_menu.r_name.address }}</span>
+                                            <h4 itemprop="headline"><a href="{% url 'food_detail' our_menu.pk %}" title="" itemprop="url">{{ our_menu.food_name }}</a></h4>
+                                            <span class="price">${{ our_menu.food_price }}</span>
+                                            
+                                            <ul class="post-meta">
+                                                <li><i class="fa fa-check-circle-o"></i> Min order ${{ min_price }}</li>
+                                                <li><i class="flaticon-transport"></i> 30min</li>
+                                            </ul>
+                                            <span class="post-rate yellow-bg brd-rd2"><i class="fa fa-star-o"></i> 4.25</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            {% else %}
+                            {% for our_menu in our_menu %}
+                            <div class="col-md-6 col-sm-12 col-lg-6 filter-item filter-item1">
+                                <div class="featured-restaurant-box wow fadeIn" data-wow-delay="0.1s">
+                                    <div class="featured-restaurant-thumb">
+                                        <a href="{% url 'food_detail' our_menu.pk %}" title="" itemprop="url"><img class="brd-rd50" src="{{ our_menu.r_name.r_image.url }}" alt="featured-restaurant-img1.jpg" itemprop="image"></a>
+                                    </div>
+                                    <div class="featured-restaurant-info">
+                                        <span class="red-clr">{{ our_menu.r_name.address }}}</span>
+                                        <h4 itemprop="headline"><a href="{% url 'food_detail' our_menu.pk %}" title="" itemprop="url">{{ our_menu.food_name }}</a></h4>
+                                        <span class="price">${{ our_menu.food_price }}</span>
+                                        
+                                        <ul class="post-meta">
+                                            <li><i class="fa fa-check-circle-o"></i> Min order ${{ min_price }}</li>
+                                            <li><i class="flaticon-transport"></i> 30min</li>
+                                        </ul>
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

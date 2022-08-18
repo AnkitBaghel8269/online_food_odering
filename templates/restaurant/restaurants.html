@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main %}
+
+        <section>
+            <div class="block">
+				<div class="fixed-bg" style="background-image: url('{% static "assets/images/topbg.jpg" %}');"></div>
+                <div class="page-title-wrapper text-center">
+					<div class="col-md-12 col-sm-12 col-lg-12">
+						<div class="page-title-inner">
+							<h1 itemprop="headline">Search Your Favourite Food</h1>
+                            <form class="restaurant-search-form brd-rd2" action="{% url 'search_by_food_results' %}" method="get">
+                                <div class="row mrg10">
+                                    <div class="col-md-3 col-sm-5 col-lg-9">
+										<div class="input-field brd-rd2"><input class="brd-rd2" name="search_by_food" type="text" placeholder="Enter Food Name"></div>
+									</div>
+                                    <div class="col-md-2 col-sm-3 col-lg-3 col-xs-12">
+                                       <button class="brd-rd2 red-bg" type="submit">SEARCH</button>
+                                    </div>
+                                </div>
+                            </form>
+						</div>
+					</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="bread-crumbs-wrapper">
+            <div class="container">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'index' %}" title="" itemprop="url">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#" title="" itemprop="url">Search</a></li>
+                    <li class="breadcrumb-item active">Restaurants Found</li>
+                </ol>
+            </div>
+        </div>
+
+        <section>
+            <div class="block gray-bg bottom-padd210 top-padd30">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-lg-12">
+                           
+                                                <h3 class="marginb-0" itemprop="headline">Order food online in India</h3>
+                                           
+                                            <div class="remove-ext">
+                                                <div class="row">
+                                                    {% for all in all_restaurant %}
+                                                    <div class="col-md-4 col-sm-4 col-lg-4">
+                                                        
+                                                        
+                                                        <div class="featured-restaurant-box wow fadeIn" data-wow-delay="0.2s" >
+                                                            
+                                                            <div class="featured-restaurant-info">
+                                                               
+                                                                
+                                                                <a href="{% url 'restaurant_detail' all.pk %}" title="" itemprop="url"><img style="height:100px; width:500px;" src="{{ all.r_image.url }}" alt="most-popular-img1.png" itemprop="image"></a>
+                                                          
+                                                                <h4 itemprop="headline"><a href="{% url 'restaurant_detail' all.pk %}" title="" itemprop="url">{{ all.r_name }}</a></h4>
+                                                                 
+                                                               
+                                                               
+                                                                
+                                                                
+                                                                    <h5>Address : <span class="red-clr">{{ all.address }}</span></h5>
+                                                                    <li><i class="flaticon-money"></i> Accepts cash & online payments</li>
+                                                               
+ 
+                                                                <a class="brd-rd30" href="{% url 'restaurant_detail' all.pk %}" title="Order Online"><i class="fa fa-angle-double-right"></i> Order Online</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {% endfor %}
+                                                    </div>
+                                                </div>
+                                            
+                                        </div>
+                                 
+                            </div>
+                        </div>
+                    </div>       
+        </section>
+
+      
+{% endblock main %}
